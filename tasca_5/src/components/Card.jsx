@@ -1,13 +1,15 @@
+const Card = ({ step, tutorialData, nextStep }) => {
+  return (
+    <>
+      <img src={tutorialData[step].image} alt="" />
+      <h3>{tutorialData[step].title}</h3>
+      <span>{tutorialData[step].description}</span>
+      <div>
+       
+        <button onClick={nextStep}>Next step</button>
+      </div>
+    </>
+  );
+};
 
-const Card = ({step,tutorialData}) => {
-    return(
-        <>
-         <h3>{tutorialData[step].title}</h3>
-         <span>{tutorialData[step].description}</span>
-        </>
-    )
-
-}
-
-
-export default Card
+export default Card;

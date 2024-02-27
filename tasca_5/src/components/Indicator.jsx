@@ -1,4 +1,4 @@
-import { CheckLg } from "react-bootstrap-icons"
+import { SwitchTransition, CSSTransition } from "react-transition-group"
 import styled from "styled-components"
 
 const IndicatorBall = styled.div`
@@ -17,18 +17,25 @@ background-color: #5222d0;
 cursor:pointer;
 `
 
-const Indicator = ({step,tutorialData,setStep}) => {
-    return(
-        <div className="d-flex gap-2 align-items-end">
-            {tutorialData.map((data,index) => {
-                if(index === step){
-                    return <IndicatorLongBall onClick={() => setStep(index) }/>
-                }
-                return <IndicatorBall onClick={() => setStep(index)  }/>
-            }
-            )}
-            
-        </div>
+const Indicator = ({ step, tutorialData, setStep }) => {
+    return (
+        <SwitchTransition>
+            <CSSTransition
+            key={step}
+            classNames="fade_ball"
+            addEndListener={(node, done) => node.addEventListener("transitionend", done, false)}
+            >
+                <div className="container_balls d-flex gap-2 align-items-end">
+                    {tutorialData.map((data, index) => {
+                        if (index === step) {
+                            return <IndicatorLongBall key={data.title} onClick={() => setStep(index)} />
+                        }
+                        return <IndicatorBall key={data.title} onClick={() => setStep(index)} />
+                    }
+                    )}
+                </div>
+            </CSSTransition>
+        </SwitchTransition>
     )
 }
 

@@ -1,5 +1,6 @@
 import { ArrowRight, ArrowLeft } from "react-bootstrap-icons";
 import Indicator from "./Indicator";
+import { SwitchTransition, CSSTransition } from "react-transition-group"
 
 const Card = ({ step, tutorialData, nextStep, prevStep, setStep }) => {
 
@@ -8,17 +9,26 @@ const Card = ({ step, tutorialData, nextStep, prevStep, setStep }) => {
       <div className="row">
         <div className="col-sm-8 col-md-5 col-lg-4 col-xl-3  mx-auto">
           <div className="card shadow rounded-3 ">
-            <div
-              className="container_img rounded-top pb-3"
-              style={{ backgroundColor: tutorialData[step].bgColor }}
-            >
-              <img
-                src={tutorialData[step].image}
-                alt={tutorialData[step].title}
-                height={200}
-                width={200}
-              />
-            </div>
+            <SwitchTransition>
+              <CSSTransition
+                key={tutorialData[step].title}
+                addEndListener={(node, done) => node.addEventListener("transitionend", done, false)}
+                classNames="fade"
+              >
+
+                <div
+                  className="container_img rounded-top pb-3"
+                  style={{ backgroundColor: tutorialData[step].bgColor }}
+                >
+                  <img
+                    src={tutorialData[step].image}
+                    alt={tutorialData[step].title}
+                    height={200}
+                    width={200}
+                  />
+                </div>
+              </CSSTransition>
+            </SwitchTransition>
             <div className="card-body">
               <h5 className="card-title">{tutorialData[step].title}</h5>
               <p className="card-text">{tutorialData[step].description}</p>

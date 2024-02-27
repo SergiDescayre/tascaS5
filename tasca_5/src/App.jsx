@@ -8,11 +8,11 @@ import time from "./assets/time.svg";
 const App = () => {
   const [step, setStep] = useState(0);
   const nextStep = () => {
-        setStep( prev => prev + 1 );
+        setStep(step + 1 );
 
   };
   const prevStep = () => {
-        setStep( prev => prev - 1 );
+        setStep(step - 1 );
   };
 
   let tutorialData = [

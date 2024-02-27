@@ -1,8 +1,8 @@
 import { ArrowRight, ArrowLeft } from "react-bootstrap-icons";
+import Indicator from "./Indicator";
 
-const Card = ({ step, tutorialData, nextStep, prevStep }) => {
-  console.log("paso " + step);
-  console.log(tutorialData.length - 1);
+const Card = ({ step, tutorialData, nextStep, prevStep, setStep }) => {
+
   return (
     <>
       <div className="row">
@@ -20,14 +20,10 @@ const Card = ({ step, tutorialData, nextStep, prevStep }) => {
               />
             </div>
             <div className="card-body">
-              <h6 className="card-title">{tutorialData[step].title}</h6>
+              <h5 className="card-title">{tutorialData[step].title}</h5>
               <p className="card-text">{tutorialData[step].description}</p>
               <div className="d-flex justify-content-between">
-                <div className="d-flex gap-2 align-items-end">
-                  <span>.</span>
-                  <span>.</span>
-                  <span>.</span>
-                </div>
+                <Indicator step={step} tutorialData={tutorialData} setStep={setStep} />
                 <div className="d-flex gap-1">
                   <button
                     className={

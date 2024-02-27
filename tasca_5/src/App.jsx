@@ -8,21 +8,18 @@ import time from "./assets/time.svg";
 const App = () => {
   const [step, setStep] = useState(0);
   const nextStep = () => {
-    if(step < 2){
         setStep( prev => prev + 1 );
-    }
+
   };
   const prevStep = () => {
-    if(step  != 0){
         setStep( prev => prev - 1 );
-    }
   };
 
   let tutorialData = [
     {
       title: "Dedica moltes hores",
       description:
-        "Un mínim de 30 hores a la setmana. Si no en tens prou, hauràs de dedicar-li més hores. Al rpincipi sembla impossibe, però notaras una millora rapidament.",
+        "Un mínim de 30 hores a la setmana. Si no en tens prou, hauràs de dedicar-li més hores. Al principi sembla impossibe, però notaras una millora rapidament.",
       bgColor: "#4da2a9",
       image: meditation,
     },
@@ -44,7 +41,7 @@ const App = () => {
 
   return (
     <>
-      <Card step={step} tutorialData={tutorialData} nextStep={nextStep} prevStep={prevStep}/>
+      <Card step={step} tutorialData={tutorialData} nextStep={nextStep} prevStep={prevStep} setStep={setStep}/>
     </>
   );
 };

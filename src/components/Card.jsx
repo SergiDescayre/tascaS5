@@ -8,7 +8,7 @@ const Card = ({ step, tutorialData, nextStep, prevStep, setStep }) => {
     <>
       <div className="row">
         <div className="col-sm-8 col-md-5 col-lg-4 col-xl-3  mx-auto">
-          <div className="card shadow rounded-3 ">
+          <div className="card shadow rounded-3 " style={{overflow:"hidden"}}>
             <SwitchTransition>
               <CSSTransition
                 key={tutorialData[step].title}
